@@ -7,8 +7,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import { Menu } from "lucide-react"
+import { useState } from "react"
+import MobileMenu from "./MobileMenu"
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -18,9 +22,9 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
             <HoverCard>
-              <HoverCardTrigger>
+              <HoverCardTrigger asChild>
                  <Link 
                   href="/auction" 
                   className="text-gray-700 hover:text-black transition-colors duration-200 font-medium"
@@ -54,12 +58,23 @@ const Navbar = () => {
           >
             Membership
           </Link>
+          <Link 
+            href="/blog" 
+            className="text-gray-700 hover:text-black transition-colors duration-200 font-medium"
+          >
+            Blog
+          </Link>
 
-          <Button className="cursor-pointer">
-            Sign Up
-          </Button>
         </div>
+          <div className="flex items-center gap-3">
+            <Button className="cursor-pointer">
+              Sign Up
+            </Button>
+            <Menu className="w-10 h-10 md:hidden font-bold" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}/>
+          </div>
       </div>
+
+      {isMobileMenuOpen && <MobileMenu isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen}/>}
     </nav>
   )
 }
