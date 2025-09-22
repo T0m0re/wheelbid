@@ -93,7 +93,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react"
 import { useScreenSize } from "@/lib/useScreenSize"
-import { Input } from "./ui/input"
+
 import { useState } from "react"
 
 const AuctionDropDown = () => {
