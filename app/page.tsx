@@ -8,7 +8,9 @@ export default function Home() {
       <section className="w-full h-dvh bg-emerald-200 flex items-center">
         <Hero/>
       </section>
+      <section id="auction" className="pt-8">
       <Auction/>
+      </section>
     </main>
   );
 }

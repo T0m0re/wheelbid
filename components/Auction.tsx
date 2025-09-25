@@ -129,7 +129,7 @@ const Auction = () => {
         setCarEndYear(event.target.value)
     }
   return (
-    <div id="auction" className="w-full max-w-5/6 mx-auto my-8">
+    <section className="w-full max-w-5/6 mx-auto my-8">
         <div className="mb-3">
         
             {width < 768 ? 
@@ -269,7 +269,7 @@ const Auction = () => {
                 </li>
             ))}
         </div>
-    </div>
+    </section>
   )
 }
 export default Auction

@@ -14,7 +14,7 @@ import MobileMenu from "./MobileMenu"
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50 mb-20">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -26,7 +26,7 @@ const Navbar = () => {
             <HoverCard>
               <HoverCardTrigger asChild>
                  <Link 
-                  href="/auction" 
+                  href="/#auction" 
                   className="text-gray-700 hover:text-black transition-colors duration-200 font-medium"
                 >
                   Auction
