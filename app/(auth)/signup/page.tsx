@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { signUpUser } from '@/lib/auth'
+import { signInWithGoogle, signUpUser } from '@/lib/auth'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -85,6 +85,17 @@ export default function SignupPage() {
   }
 }
 
+const googleSignIn = async()=>{
+        try {
+            await signInWithGoogle()
+            // setMessage('login succesful!')
+        } catch (error) {
+            if (error && typeof error === "object" && "message" in error) {
+            setMessage((error as { message: string }).message)}
+        }
+    }
+
+
 const togglePasswordView = (e: React.FormEvent)=>{
   e.preventDefault()
   setPasswordView(!passwordView)
@@ -141,7 +152,7 @@ const togglePasswordView = (e: React.FormEvent)=>{
           </div>
         </div>
         
-        <Button type="submit" className="bg-blue-600 text-white p-2 rounded cursor-pointer">
+        <Button type="submit" className="bg-black/70 text-white p-2 rounded cursor-pointer">
           Sign Up
         </Button>
       </form>
@@ -151,7 +162,7 @@ const togglePasswordView = (e: React.FormEvent)=>{
         <span>OR</span>
         <span className='h-[1] flex-1 bg-black'></span>
       </div>
-      <Button className='p-2 cursor-pointer text-white bg-emerald-500 w-full rounded mt-2'>
+      <Button className='p-2 cursor-pointer text-white bg-black/70 w-full rounded mt-2' onClick={googleSignIn}>
         Continue with Google
       </Button>
       </Card>

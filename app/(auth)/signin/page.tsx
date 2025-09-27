@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { signInUser } from '@/lib/auth'
+import { signInUser, signInWithGoogle } from '@/lib/auth'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
@@ -26,10 +26,21 @@ export default function SigninPage() {
         }
     }
 
+    const googleSignIn = async()=>{
+        try {
+            await signInWithGoogle()
+            // setMessage('login succesful!')
+        } catch (error) {
+            if (error && typeof error === "object" && "message" in error) {
+            setMessage((error as { message: string }).message)}
+        }
+    }
+
     const togglePasswordView = (e: React.FormEvent)=>{
         e.preventDefault()
         setPasswordView(!passwordView)
     }
+
   return (
     <div className="flex flex-col gap-4 items-center justify-center min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Sign in to WheelBid</h1>
@@ -55,11 +66,11 @@ export default function SigninPage() {
                     </Button>
                 </form>
                 <div className='flex items-center justify-between gap-2 my-3'>
-                    <span className='h-[1] flex-1 bg-black'></span>
+                    <span className='h-[1] flex-1 bg-emerald-700'></span>
                     <span className='text-sm'>Or</span>
-                    <span className='h-[1] flex-1 bg-black'></span>
+                    <span className='h-[1] flex-1 bg-emerald-700'></span>
                 </div>
-                <Button className='p-2 cursor-pointer text-white bg-black/70 w-full rounded'>
+                <Button className='p-2 cursor-pointer text-white bg-black/70 w-full rounded' onClick={googleSignIn}>
                     Continue with Google
                 </Button>
             </div>

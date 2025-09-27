@@ -36,3 +36,15 @@ export async function getCurrentUser() {
   const { data: { user } } = await supabase.auth.getUser()
   return user
 }
+
+export const signInWithGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'http://localhost:3000/auth/callback',
+    },
+  })
+
+  if (error) console.error('Google Sign-in Error:', error)
+  return data
+}

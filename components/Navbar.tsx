@@ -68,7 +68,7 @@ const Navbar = () => {
         </div>
           <div className="flex items-center gap-3">
             <Button className="cursor-pointer bg-emerald-300 text-black">
-              Sign Up
+              Sell Car
             </Button>
             <Menu className="w-10 h-10 md:hidden font-bold" onClick={()=>setIsMobileMenuOpen(!isMobileMenuOpen)}/>
           </div>
