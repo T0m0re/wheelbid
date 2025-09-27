@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient'
 
-export async function signUpUser(email: string, password: string, name: string) {
+export async function signUpUser(email: string, password: string) {
   // 1. Create user in Auth
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email,
@@ -15,7 +15,7 @@ export async function signUpUser(email: string, password: string, name: string) 
   if (userId) {
     const { error: dbError } = await supabase
       .from('users')
-      .insert([{ id: userId, name }])
+      .insert([{ id: userId }])
 
     if (dbError) throw dbError
   }
